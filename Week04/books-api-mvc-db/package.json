@@ -1,8 +1,8 @@
 {
-  "name": "bed2024apr_p02_s10258759",
+  "name": "books-api-mvc-db",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
-    "chalk": "^5.3.0",
     "express": "^4.19.2",
     "joi": "^17.13.1",
     "mssql": "^10.0.2"
