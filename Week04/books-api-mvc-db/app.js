@@ -1,5 +1,7 @@
 const express = require("express");
+const router = express.Router();
 const booksController = require("./controllers/booksController");
+const usersController = require("./controllers/usersController");
 const sql = require("mssql");
 const dbConfig = require("./dbConfig");
 const bodyParser = require("body-parser"); // Import body-parser
@@ -22,6 +24,15 @@ app.post("/books", validateBook, booksController.createBook); // POST for creati
 app.put("/books/:id", validateBook, booksController.updateBook);
 app.delete("/books/:id", booksController.deleteBook); // DELETE for deleting books
 
+app.use(router);
+
+router.get("/users/with-books", usersController.getUsersWithBooks);
+router.get("/users/search", usersController.searchUsers);
+router.post("/users", usersController.createUser); // Create user
+router.get("/users", usersController.getAllUsers); // Get all users
+router.get("/users/:id", usersController.getUserById); // Get user by ID
+router.put("/users/:id", usersController.updateUser); // Update user
+router.delete("/users/:id", usersController.deleteUser); // Delete user
 
 app.listen(port, async () => {
   try {
@@ -45,3 +56,6 @@ process.on("SIGINT", async () => {
   console.log("Database connection closed");
   process.exit(0); // Exit with code 0 indicating successful shutdown
 });
+
+
+module.exports = router;
